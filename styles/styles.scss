@@ -76,12 +76,12 @@ p {
     opacity: 0.75;
   }
 
-  .circle1{
+  .circle1 {
     margin-top: -250px;
     margin-left: -250px;
   }
 
-  .circle2{
+  .circle2 {
     margin-top: 150px;
     margin-left: 1100px;
   }
@@ -166,7 +166,8 @@ p {
         transform-style: preserve-3d;
         background-color: $yellow-color;
 
-        .front, .back {
+        .front,
+        .back {
           position: absolute;
           width: 100%;
           height: 100%;
@@ -174,26 +175,62 @@ p {
           backface-visibility: hidden;
           background-color: $yellow-color;
         }
-        
+
         img {
           width: 179px;
         }
-        
+
         .back {
           transform: rotateY(180deg);
 
-          p{
+          p {
             font-size: 14px;
           }
         }
       }
     }
 
-    .card:hover{
+    .card:hover {
       .inner {
         transform: rotateY(180deg);
       }
-    } 
+    }
+  }
+}
 
+.button{
+  margin-top: 200px;
+  max-width: 180px;
+  max-height: 37px;
+  background-color: $yellow-color;
+  padding: 5px 15px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  a{
+    border-radius: 25px;
+    font-size: 23px;
+    font-weight: 600;
+    text-decoration: none;
+  } 
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    min-height: 100%;
+  }
+
+  .project{
+    display: none;
+  }
+
+  .button{
+    margin-top: 50px;
+  }
+
+  .right{
+    display: none;
   }
 }
