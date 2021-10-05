@@ -1,5 +1,5 @@
 <?php $data = [
-    "nama" => "Joni",
+    "nama" => "Michael Jeffry Setiawan",
     "lead" => "I'm a Frontend ReactJS Developer, and now I'm as a Student on UPN 'veteran' Jawa Timur",
     "media" => [
       [

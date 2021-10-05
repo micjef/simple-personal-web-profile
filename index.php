@@ -1,5 +1,12 @@
 <?php 
-  require 'data.php';
+  require './data/data.php';//ini db local, pada code ini hanya untuk menampilkan nama dan lead
+
+  //koneksi ke db
+  $conn = mysqli_connect("localhost", "root", "", "pemwebupn");
+
+  //ambil data dari db
+  $media = mysqli_query($conn, "SELECT * FROM media");
+  $project = mysqli_query($conn, "SELECT * FROM project");
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +15,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Michael Jeffry Setiawan</title>
+    <title><?php echo $data["nama"]; ?></title>
     <link rel="stylesheet" href="./styles/styles.css" />
     <link
       rel="shortcut icon"
@@ -38,32 +45,32 @@
         </div>
 
         <div class="media">
-          <?php foreach($data["media"] as $media) : ?>
-            <a href="<?= $media["link"]; ?>
-              "><img src="./images/<?= $media["img"]; ?>" alt="<?= $media["alt"]; ?>"
+          <?php while($mediaResult = mysqli_fetch_assoc($media)) : ?>
+            <a href="<?= $mediaResult["link"]; ?>
+              "><img src="./images/<?= $mediaResult["img"]; ?>" alt="<?= $mediaResult["alt"]; ?>"
             /></a>
-          <?php endforeach; ?>
+          <?php endwhile; ?>
         </div>
 
         <div class="project">
           <p class="lead">My Projects</p>
 
           <div class="projects">
-            <?php foreach($data["project"] as $project) : ?>
+            <?php while($projectResult = mysqli_fetch_assoc($project)) : ?>
               <div class="card">
                 <div class="inner">
                   <div class="front">
-                    <img src="./images/project/<?= $project["img"];?>" alt="<?= $project["title"];?>" />
+                    <img src="./images/project/<?= $projectResult["img"];?>" alt="<?= $projectResult["title"];?>" />
                   </div>
                   <div class="back">
-                    <a href="<?= $project["link"];?>">
-                      <p><?= $project["title"];?></p>
+                    <a href="<?= $projectResult["link"];?>">
+                      <p><?= $projectResult["title"];?></p>
                     </a>
-                    <p><?= $project["lead"];?></p>
+                    <p><?= $projectResult["lead"];?></p>
                   </div>
                 </div>
               </div>
-            <?php endforeach; ?>
+            <?php endwhile; ?>
           </div>
         </div>
 
